@@ -42,7 +42,7 @@ export function fetchPage(pathname: string) {
 }
 
 function fileToUrl(file: string) {
-  const start = file.indexOf('/src/content/pages') + '/src/content/pages'.length
+  const start = file.indexOf('/src/pages') + '/src/pages'.length
   const end = file.lastIndexOf('.')
   const path = file
     .substring(start, end)
@@ -54,7 +54,7 @@ function fileToUrl(file: string) {
 
 export function fetchPages() {
   const results = import.meta.glob<Page>(
-    ['/src/content/pages/**/*.md', '/src/content/pages/**/*.mdx', '/src/content/pages/**/*.astro'],
+    ['/src/pages/**/*.md', '/src/pages/**/*.mdx', '/src/pages/**/*.astro'],
     { eager: true }
   )
   return Object.values<Page>(results).map((page) => ({
